@@ -34,16 +34,16 @@ if (typeof jQuery === 'undefined') {
   function transitionEnd() {
     var el = document.createElement('bootstrap')
 
-    var transEndEventNames = {
+    var transEnganitNames = {
       WebkitTransition : 'webkitTransitionEnd',
       MozTransition    : 'transitionend',
       OTransition      : 'oTransitionEnd otransitionend',
       transition       : 'transitionend'
     }
 
-    for (var name in transEndEventNames) {
+    for (var name in transEnganitNames) {
       if (el.style[name] !== undefined) {
-        return { end: transEndEventNames[name] }
+        return { end: transEnganitNames[name] }
       }
     }
 
@@ -440,7 +440,7 @@ if (typeof jQuery === 'undefined') {
       $nextIndicator && $nextIndicator.addClass('active')
     }
 
-    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
+    var sliganit = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
       $next.addClass(type)
       $next[0].offsetWidth // force reflow
@@ -452,7 +452,7 @@ if (typeof jQuery === 'undefined') {
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
           setTimeout(function () {
-            that.$element.trigger(slidEvent)
+            that.$element.trigger(sliganit)
           }, 0)
         })
         .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
@@ -460,7 +460,7 @@ if (typeof jQuery === 'undefined') {
       $active.removeClass('active')
       $next.addClass('active')
       this.sliding = false
-      this.$element.trigger(slidEvent)
+      this.$element.trigger(sliganit)
     }
 
     isCycling && this.cycle()

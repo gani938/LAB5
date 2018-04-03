@@ -1,5 +1,5 @@
 /**
- * Created by deven on 4/4/2017.
+ * Created by gani on 4/4/2017.
  */
 /**
  * @license AngularJS v1.6.1
@@ -3324,10 +3324,10 @@
             // We can not use jqLite since we are not done loading and jQuery could be loaded later.
 
             // Works for modern browsers and IE9
-            window.document.addEventListener('DOMContentLoaded', trigger);
+            window.document.adganitListener('DOMContentLoaded', trigger);
 
             // Fallback to window.onload for others
-            window.addEventListener('load', trigger);
+            window.adganitListener('load', trigger);
         }
     }
 
@@ -3663,7 +3663,7 @@
                     eventFns = events[type] = [];
                     eventFns.specialHandlerWrapper = specialHandlerWrapper;
                     if (type !== '$destroy' && !noEventListener) {
-                        element.addEventListener(type, handle);
+                        element.adganitListener(type, handle);
                     }
                 }
 
@@ -4377,18 +4377,18 @@
  *
  *    // The service factory function
  *    this.$get = ['$http', function($http) {
- *      var trackedEvents = {};
+ *      var trackeganits = {};
  *      return {
  *        // Call this to track an event
  *        event: function(event) {
- *          var count = trackedEvents[event] || 0;
+ *          var count = trackeganits[event] || 0;
  *          count += 1;
- *          trackedEvents[event] = count;
+ *          trackeganits[event] = count;
  *          return count;
  *        },
  *        // Call this to save the tracked events to the trackingUrl
  *        save: function() {
- *          $http.post(trackingUrl, trackedEvents);
+ *          $http.post(trackingUrl, trackeganits);
  *        }
  *      };
  *    }];
@@ -11645,9 +11645,9 @@
                  *      HTTP headers to send to the server. If the return value of a function is null, the
                  *      header will not be sent. Functions accept a config object as an argument.
                  *    - **eventHandlers** - `{Object}` - Event listeners to be bound to the XMLHttpRequest object.
-                 *      To bind events to the XMLHttpRequest upload object, use `uploadEventHandlers`.
+                 *      To bind events to the XMLHttpRequest upload object, use `uploaganitHandlers`.
                  *      The handler will be called in the context of a `$apply` block.
-                 *    - **uploadEventHandlers** - `{Object}` - Event listeners to be bound to the XMLHttpRequest upload
+                 *    - **uploaganitHandlers** - `{Object}` - Event listeners to be bound to the XMLHttpRequest upload
                  *      object. To bind events to the XMLHttpRequest object, use `eventHandlers`.
                  *      The handler will be called in the context of a `$apply` block.
                  *    - **xsrfHeaderName** â€“ `{string}` â€“ Name of HTTP header to populate with the XSRF token.
@@ -12158,7 +12158,7 @@
                         $httpBackend(config.method, url, reqData, done, reqHeaders, config.timeout,
                             config.withCredentials, config.responseType,
                             createApplyHandlers(config.eventHandlers),
-                            createApplyHandlers(config.uploadEventHandlers));
+                            createApplyHandlers(config.uploaganitHandlers));
                     }
 
                     return promise;
@@ -12325,7 +12325,7 @@
 
     function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDocument) {
         // TODO(vojta): fix the signature
-        return function(method, url, post, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploadEventHandlers) {
+        return function(method, url, post, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploaganitHandlers) {
             url = url || $browser.url();
 
             if (lowercase(method) === 'jsonp') {
@@ -12382,11 +12382,11 @@
                 xhr.ontimeout = requestError;
 
                 forEach(eventHandlers, function(value, key) {
-                    xhr.addEventListener(key, value);
+                    xhr.adganitListener(key, value);
                 });
 
-                forEach(uploadEventHandlers, function(value, key) {
-                    xhr.upload.addEventListener(key, value);
+                forEach(uploaganitHandlers, function(value, key) {
+                    xhr.upload.adganitListener(key, value);
                 });
 
                 if (withCredentials) {
@@ -12471,8 +12471,8 @@
                 }
             };
 
-            script.addEventListener('load', callback);
-            script.addEventListener('error', callback);
+            script.adganitListener('load', callback);
+            script.adganitListener('error', callback);
             rawDocument.body.appendChild(script);
             return callback;
         }
@@ -23122,7 +23122,7 @@
                                     event.preventDefault();
                                 };
 
-                                formElement[0].addEventListener('submit', handleFormSubmission);
+                                formElement[0].adganitListener('submit', handleFormSubmission);
 
                                 // unregister the preventDefault listener so that we don't not leak memory but in a
                                 // way that will achieve the prevention of the default action.
