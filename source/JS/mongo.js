@@ -37,7 +37,7 @@ app.post('/register', function (req, res) {
 });
 
 var insertDocument = function(db, data, callback) {
-    db.collection('lab10').insertOne( data, function(err, result) {
+    db.collection('lab5').insertOne( data, function(err, result) {
         if(err)
         {
             res.write("Registration Failed, Error While Registering");
@@ -55,7 +55,7 @@ app.get('/signin', function (req, res,next) {
             res.end();
         }
         z = req.query.email;
-        db.collection('lab10', function (err, collection) {
+        db.collection('lab5', function (err, collection) {
             collection.findOne({'email': z}, function (err, item) {
                 if (err) {
                     res.write("failed to validate");
@@ -79,7 +79,7 @@ app.get('/userDetails',function (req,res,next) {
             res.write("Failed, Error while connecting to Database");
             res.end();
         }
-        db.collection('lab10',function (err,collection) {
+        db.collection('lab5',function (err,collection) {
             collection.findOne({'email':z},function (err,item) {
                 if(err)
                 {
@@ -102,7 +102,7 @@ app.put('/update', function (req, res) {
             res.write("Failed, Error while connecting to Database");
             res.end();
         }
-        db.collection('lab10').update({'email':z},{$set:{'email':req.body.email,'fname':req.body.fname,'lname':req.body.lname}}, function (err, result) {
+        db.collection('lab5').update({'email':z},{$set:{'email':req.body.email,'fname':req.body.fname,'lname':req.body.lname}}, function (err, result) {
             if(err)
             {
                 res.write("failed to update");
